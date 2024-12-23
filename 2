@@ -1,0 +1,28 @@
+chmod 754 permissions.txt
+ls -l permissions.txt
+
+-rwxr-xr-- 1 user user 0 Dec 24 12:00 permissions.txt
+
+
+---
+
+#### **3.2 ذخیره اسکریپت‌ها**
+1. اسکریپت‌های لازم را در فایل جداگانه ذخیره کنید:
+   ```bash
+   touch user_management.sh
+   nano user_management.sh
+
+
+#!/bin/bash
+# Create a user and group for the project
+sudo useradd developer
+sudo groupadd dev_team
+sudo usermod -aG dev_team developer
+
+# Create a shared file with group permissions
+touch dev_guide.txt
+sudo chown :dev_team dev_guide.txt
+chmod 660 dev_guide.txt
+
+
+chmod +x user_management.sh
